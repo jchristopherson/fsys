@@ -3,12 +3,9 @@
 #include <cstring>
 #include <cstdlib>
 #include "regular_expressions.h"
+#include "helper_macros.h"
 
 using namespace std;
-
-#ifndef MIN
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
-#endif
 
 // References:
 // - http://www.cplusplus.com/reference/regex/regex_match/

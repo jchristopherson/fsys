@@ -1,5 +1,6 @@
 program main
     use string_tests
+    use fsys_test_routines
     implicit none
 
     logical :: rst
@@ -43,6 +44,12 @@ program main
 
     rst = test_replace()
     if (.not.rst) flag = 12
+
+    rst = test_split_path()
+    if (.not.rst) flag = 13
+
+    rst = test_get_directory_contents()
+    if (.not.rst) flag = 14
 
     ! End
     if (flag /= 0) stop flag

@@ -3,6 +3,7 @@ include("${PROJECT_SOURCE_DIR}/cmake/helper.cmake")
 set(fsys_test_sources
     fsys_test.f90
     string_tests.f90
+    fsys_test_routines.f90
 )
 
 add_executable(fsys_test ${fsys_test_sources})
