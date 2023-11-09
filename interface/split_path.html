@@ -8,7 +8,7 @@
     <meta name="author" content="Jason Christopherson" >
     <link rel="icon" href="../favicon.png">
 
-    <title>insert &ndash; FSYS</title>
+    <title>split_path &ndash; FSYS</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -76,7 +76,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>insert
+    <h1>split_path
       <small>Interface</small>
       
     </h1>
@@ -88,18 +88,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p> 4.6% of total for procedures.</p>Including implementation: 60 statements, 46.2% of total for procedures.">6 statements</a>
+               title="<p> 3.1% of total for procedures.</p>Including implementation: 19 statements, 14.6% of total for procedures.">4 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/strings.f90"> Source File</a>
+              <a href="../src/fsys.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/strings.f90.html'>strings.f90</a></li>
-              <li><a href='../module/strings.html'>strings</a></li>
-          <li class="active">insert</li>
+              <li><a href='../sourcefile/fsys.f90.html'>fsys.f90</a></li>
+              <li><a href='../module/fsys.html'>fsys</a></li>
+          <li class="active">split_path</li>
         </ol>
       </div>
     </div>
@@ -142,10 +142,8 @@
       </div>
       <div id="modprocs-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_char">char_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_string">char_insert_string</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_char">string_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_string">string_insert_string</a>
+            <a class="list-group-item" href="../interface/split_path.html#moduleprocedure-split_path_char">split_path_char</a>
+            <a class="list-group-item" href="../interface/split_path.html#moduleprocedure-split_path_string">split_path_string</a>
         </div>
       </div>
     </div>
@@ -157,8 +155,8 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>public interface insert</h2>
-   <p>Inserts a substring into another string at the specified index.</p>
+      <h2>public interface split_path</h2>
+   <p>Splits the supplied path into components.</p>
 <br>
      <section class="visible-xs visible-sm hidden-md">
          <h3>Contents</h3>
@@ -188,10 +186,8 @@
       </div>
       <div id="modprocs-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_char">char_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_string">char_insert_string</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_char">string_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_string">string_insert_string</a>
+            <a class="list-group-item" href="../interface/split_path.html#moduleprocedure-split_path_char">split_path_char</a>
+            <a class="list-group-item" href="../interface/split_path.html#moduleprocedure-split_path_string">split_path_string</a>
         </div>
       </div>
     </div>
@@ -205,10 +201,10 @@
 
    <h2>Module Procedures</h2>
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-char_insert_char"></span><h3>private pure elemental function char_insert_char(str, start, substr) result(rst)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-split_path_char"></span><h3>private pure elemental function split_path_char(path) result(rst)  
 </h3></div>
     <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
+        <p>Splits the supplied path into components.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -231,39 +227,9 @@
               
             </td>
             <td>::</td>
-            <td><strong>str</strong></td>
+            <td><strong>path</strong></td>
             <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
+                <p>The path to split.</p>
             </td>
         </tr>
     </tbody>
@@ -271,92 +237,18 @@
 
     <h4>
     Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
+    <small>type(<a href='../type/file_path.html'>file_path</a>)</small>
     </h4>
-    <p>The resulting string.</p>
+    <p>The resulting file path components.</p>
 
     </div>
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-char_insert_string"></span><h3>private pure elemental function char_insert_string(str, start, substr) result(rst)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-split_path_string"></span><h3>private pure elemental function split_path_string(path) result(rst)  
 </h3></div>
     <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-string_insert_char"></span><h3>private pure elemental function string_insert_char(str, start, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
+        <p>Splits the supplied path into components.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -379,39 +271,9 @@
               
             </td>
             <td>::</td>
-            <td><strong>str</strong></td>
+            <td><strong>path</strong></td>
             <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
+                <p>The path to split.</p>
             </td>
         </tr>
     </tbody>
@@ -419,83 +281,9 @@
 
     <h4>
     Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
+    <small>type(<a href='../type/file_path.html'>file_path</a>)</small>
     </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-string_insert_string"></span><h3>private pure elemental function string_insert_string(str, start, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
+    <p>The resulting file path components.</p>
 
     </div>
   </div>

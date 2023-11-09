@@ -232,7 +232,7 @@ module strings
         end function
     end interface
 
-    interface ! from regular_expressions.cpp
+    interface ! from regular_expressions.h
         pure subroutine c_regex_match(src, pattern, numbuff, buffsizes, &
             buffer, itemsizes, count) bind(C, name = "c_regex_match")
             use iso_c_binding
@@ -1264,12 +1264,6 @@ contains
             end if
         end if
     end function
-
-! ------------------------------------------------------------------------------
-
-! ------------------------------------------------------------------------------
-
-! ------------------------------------------------------------------------------
 
 ! ******************************************************************************
 ! STRING_BUILDER ROUTINES

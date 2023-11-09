@@ -88,7 +88,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title=" 1.1% of total for modules and submodules.">12 statements</a>
+               title="10.0% of total for modules and submodules.">125 statements</a>
           </li>
 
             <li id="source-file">
@@ -123,7 +123,20 @@
   
   
   
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#inters-0">Interfaces</a>
+        </h3>
+      </div>
+      <div id="inters-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#interface-get_directory_contents">get_directory_contents</a>
+            <a class="list-group-item" href="../module/fsys.html#interface-split_path">split_path</a>
+        </div>
+      </div>
+    </div>
+
   
       <div class="panel panel-primary">
       <div class="panel-heading text-left">
@@ -133,12 +146,25 @@
       </div>
       <div id="types-0" class="panel-collapse collapse">
         <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#type-directory_contents">directory_contents</a>
             <a class="list-group-item" href="../module/fsys.html#type-file_path">file_path</a>
         </div>
       </div>
     </div>
 
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-0">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-0" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#proc-get_current_work_directory">get_current_work_directory</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -155,7 +181,21 @@
     <div class="col-md-9" id='text'>
     <p>Provides a collection of types and routines for system-related 
 operations.</p>
-    
+<br>        <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+          <li class="list-group-item">
+            <ul class="list-inline">
+                <li><a href='../module/strings.html'>strings</a></li>
+                <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
+                <li><a href="http://fortranwiki.org/fortran/show/iso_c_binding">iso_c_binding</a></li>
+            </ul>
+          </li>
+      </ul>
+    </div>
+
     
     <br>
 
@@ -169,7 +209,20 @@ operations.</p>
   
   
   
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#inters-1">Interfaces</a>
+        </h3>
+      </div>
+      <div id="inters-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#interface-get_directory_contents">get_directory_contents</a>
+            <a class="list-group-item" href="../module/fsys.html#interface-split_path">split_path</a>
+        </div>
+      </div>
+    </div>
+
   
       <div class="panel panel-primary">
       <div class="panel-heading text-left">
@@ -179,12 +232,25 @@ operations.</p>
       </div>
       <div id="types-1" class="panel-collapse collapse">
         <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#type-directory_contents">directory_contents</a>
             <a class="list-group-item" href="../module/fsys.html#type-file_path">file_path</a>
         </div>
       </div>
     </div>
 
-  
+      <div class="panel panel-primary">
+      <div class="panel-heading text-left">
+        <h3 class="panel-title">
+          <a data-toggle="collapse" href="#funcs-1">Functions</a>
+        </h3>
+      </div>
+      <div id="funcs-1" class="panel-collapse collapse">
+        <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#proc-get_current_work_directory">get_current_work_directory</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -200,10 +266,295 @@ operations.</p>
 
     
     
+    <section>
+   <h2>Interfaces</h2>
+       <div class="panel panel-default">
+    <div class="panel-heading codesum">
+      <span class="anchor" id="interface-get_directory_contents"></span>
+      <h3>public        interface <a href='../interface/get_directory_contents.html'>get_directory_contents</a> 
+      </h3>
+    </div>
+      <div class="panel-body">
+        <p>Returns the contents of the specified directory.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure function get_directory_contents_char(dir) result(rst)  
+
+    </h3>
+  <p>Returns the contents of the specified directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The directory to search.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/directory_contents.html'>directory_contents</a>)</small>
+    </h4>
+    <p>The directory contents.</p>
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure function get_directory_contents_string(dir) result(rst)  
+
+    </h3>
+  <p>Returns the contents of the specified directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The directory to search.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/directory_contents.html'>directory_contents</a>)</small>
+    </h4>
+    <p>The directory contents.</p>
+
+          </li>
+    </ul>
+  </div>
+
+       <div class="panel panel-default">
+    <div class="panel-heading codesum">
+      <span class="anchor" id="interface-split_path"></span>
+      <h3>public        interface <a href='../interface/split_path.html'>split_path</a> 
+      </h3>
+    </div>
+      <div class="panel-body">
+        <p>Splits the supplied path into components.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function split_path_char(path) result(rst)  
+
+    </h3>
+  <p>Splits the supplied path into components.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>path</strong></td>
+            <td>
+                <p>The path to split.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/file_path.html'>file_path</a>)</small>
+    </h4>
+    <p>The resulting file path components.</p>
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function split_path_string(path) result(rst)  
+
+    </h3>
+  <p>Splits the supplied path into components.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>path</strong></td>
+            <td>
+                <p>The path to split.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/file_path.html'>file_path</a>)</small>
+    </h4>
+    <p>The resulting file path components.</p>
+
+          </li>
+    </ul>
+  </div>
+
+    </section>
+  <br>
 
     
     <section>
      <h2>Derived Types</h2>
+       <div class="panel panel-default">
+    <div class="panel-heading codesum">
+      <span class="anchor" id="type-directory_contents"></span>
+      <h3>
+        type, public&nbsp;::&nbsp;
+        <a href='../type/directory_contents.html'>directory_contents</a>
+        
+      </h3>
+    </div>
+    <div class="panel-body">
+      <p>Defines a container describing the contents of a directory.</p>
+
+        <h4>Components</h4>
+          <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Visibility</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+<th></th><th>Initial</th>        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-directory~2"></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+              <td>public</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>directory</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>The directory containing the aforementioned contents.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-files"></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable, dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>files</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>A list of files in the directory.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-subdirectories"></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+              <td>public,</td>
+            <td>
+              allocatable, dimension(:)
+            </td>
+            <td>::</td>
+            <td><strong>subdirectories</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+<p>A list of sub-directories.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+
+
+    </div>
+  </div>
+
        <div class="panel panel-default">
     <div class="panel-heading codesum">
       <span class="anchor" id="type-file_path"></span>
@@ -230,11 +581,11 @@ operations.</p>
         <tr>
             <td>
               <span class="anchor" id="variable-directory"></span>
-              character(len=:),
+              type(<a href='../type/string.html'>string</a>),
             </td>
-              <td>public,</td>
+              <td>public</td>
             <td>
-              allocatable
+              
             </td>
             <td>::</td>
             <td><strong>directory</strong></td>
@@ -247,11 +598,11 @@ operations.</p>
         <tr>
             <td>
               <span class="anchor" id="variable-drive"></span>
-              character(len=:),
+              type(<a href='../type/string.html'>string</a>),
             </td>
-              <td>public,</td>
+              <td>public</td>
             <td>
-              allocatable
+              
             </td>
             <td>::</td>
             <td><strong>drive</strong></td>
@@ -264,11 +615,11 @@ operations.</p>
         <tr>
             <td>
               <span class="anchor" id="variable-extension"></span>
-              character(len=:),
+              type(<a href='../type/string.html'>string</a>),
             </td>
-              <td>public,</td>
+              <td>public</td>
             <td>
-              allocatable
+              
             </td>
             <td>::</td>
             <td><strong>extension</strong></td>
@@ -281,11 +632,11 @@ operations.</p>
         <tr>
             <td>
               <span class="anchor" id="variable-filename"></span>
-              character(len=:),
+              type(<a href='../type/string.html'>string</a>),
             </td>
-              <td>public,</td>
+              <td>public</td>
             <td>
-              allocatable
+              
             </td>
             <td>::</td>
             <td><strong>filename</strong></td>
@@ -307,6 +658,29 @@ operations.</p>
     </section>
   <br>
     
+ 
+    <section>
+    <h2>Functions</h2>
+      <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-get_current_work_directory"></span><h3>public pure function <a href='../proc/get_current_work_directory.html'>get_current_work_directory</a>() result(rst)  
+</h3></div>
+    <div class="panel-body">
+          
+  <p>Gets the current working directory.</p>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>)</small>
+    </h4>
+    <p>The working directory.</p>
+
+    </div>
+  </div>
+
+    </section>
+    <br>
 
 
 
@@ -326,7 +700,7 @@ operations.</p>
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-11-09 17:58            </p>
+ on 2023-11-09 22:15            </p>
         </div>
       </div>
       <br>
