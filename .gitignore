@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Directories
+build/
+doc/
+
+# VS Code Stuff
+launch.json
+settings.json
