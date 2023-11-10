@@ -46,12 +46,12 @@ void c_split_file_path(const char *path, char *drive, char *dir, char *fname,
 #ifdef WIN32
     _splitpath(path, drive, dir, fname, ext);
 #else
-    drive[0] = '\0';
-    dir[0] = '\0';
-    fname[0] = '\0';
-    ext[0] = '\0';
+    *drive = '\0';
+    *dir = '\0';
+    *fname = '\0';
+    *ext = '\0';
 
-    char *cpath1, cpath2;
+    char *cpath1, *cpath2;
     cpath1 = (char*)malloc((size_t)((strlen(path) + 1) * sizeof(char)));
     if (cpath1 == NULL) return;
     strcpy(cpath1, path);
@@ -205,7 +205,7 @@ void strip_extension(char *fname, char *ext, char sep)
 {
     // Find the last 'sep' character
     char *lastSep = strrchr(fname, sep);
-    ext = '\0';
+    *ext = '\0';
     if (lastSep != NULL) {
         strcpy(ext, lastSep);
         *lastSep = '\0'; // modifies fname as lastSep is a pointer to the appropriate location in fname
