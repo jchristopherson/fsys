@@ -120,8 +120,8 @@ jobs:
       run: |
         ifort --version
         fpm --version
-        fpm build
+        fpm build --profile debug --flag "-warn nointerfaces" --cxx-flag "-H"
 
     - name: fpm test
       run: |
-        fpm test
+        fpm test --profile debug --flag "-warn nointerfaces" --cxx-flag "-H"
