@@ -75,11 +75,11 @@ jobs:
         run: |
           gfortran --version
           fpm --version
-          fpm build
+          fpm build --cxx-flag "-DUNICODE -D_UNICODE -D_WIN32_WINNT=_WIN32_WINNT_VISTA -DNTDDI_VERSION=NTDDI_VISTA"
 
       - name: fpm test
         run: |
-          fpm test
+          fpm test --cxx-flag "-DUNICODE -D_UNICODE -D_WIN32_WINNT=_WIN32_WINNT_VISTA -DNTDDI_VERSION=NTDDI_VISTA"
 
   intel-build:
     runs-on: ubuntu-latest
