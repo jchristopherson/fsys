@@ -5,6 +5,8 @@
 #include <cstring>
 #include "helper_macros.h"
 
+void strip_extension(char *fname, char *ext, char sep) ;
+
 #ifdef WIN32
 
 #include <windows.h>
@@ -23,6 +25,7 @@ bool get_dir_contents_win32(const char *dir, int nbuffers, int bufferSize,
 
 #include <unistd.h>
 #include <dirent.h>
+#include <libgen.h>
 
 bool get_dir_contents_posix(const char *dir, int nbuffers, int bufferSize,
     char **fnames, int *nnames, int *nameLengths, char **dirnames, int *ndir,
@@ -40,7 +43,30 @@ using namespace std;
 void c_split_file_path(const char *path, char *drive, char *dir, char *fname, 
                        char *ext)
 {
+#ifdef WIN32
     _splitpath(path, drive, dir, fname, ext);
+#else
+    drive[0] = '\0';
+    dir[0] = '\0';
+    fname[0] = '\0';
+    ext[0] = '\0';
+
+    char *cpath1, cpath2;
+    cpath1 = (char*)malloc((size_t)((strlen(path) + 1) * sizeof(char)));
+    if (cpath1 == NULL) return;
+    strcpy(cpath1, path);
+
+    cpath2 = (char*)malloc((size_t)((strlen(path) + 1) * sizeof(char)));
+    if (cpath2 == NULL) return;
+    strcpy(cpath2, path);
+
+    strcpy(dir, dirname(cpath1));
+    strcpy(fname, basename(cpath2));
+    strip_extension(fname, ext, '.');
+
+    free(cpath1);
+    free(cpath2);
+#endif
 }
 
 void c_get_directory_contents(const char *dir, int nbuffers, int bufferSize, 
@@ -146,8 +172,8 @@ bool get_dir_contents_posix(const char *dir, int nbuffers, int bufferSize,
                 n = strlen(ddir->d_name);
                 mn = MIN((size_t)bufferSize, n);
                 strncpy(
+                    ddir->d_name,
                     dirnames[*ndir],
-                    n,
                     mn
                 );
                 dirLengths[*ndir] = mn;
@@ -159,8 +185,8 @@ bool get_dir_contents_posix(const char *dir, int nbuffers, int bufferSize,
                 n = strlen(ddir->d_name);
                 mn = MIN((size_t)bufferSize, n);
                 strncpy(
+                    ddir->d_name,
                     fnames[*nnames],
-                    n,
                     mn
                 );
                 nameLengths[*nnames] = mn;
@@ -174,3 +200,14 @@ bool get_dir_contents_posix(const char *dir, int nbuffers, int bufferSize,
 }
 
 #endif
+
+void strip_extension(char *fname, char *ext, char sep) 
+{
+    // Find the last 'sep' character
+    char *lastSep = strrchr(fname, sep);
+    ext = '\0';
+    if (lastSep != NULL) {
+        strcpy(ext, lastSep);
+        *lastSep = '\0'; // modifies fname as lastSep is a pointer to the appropriate location in fname
+    }
+}
