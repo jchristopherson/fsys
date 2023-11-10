@@ -61,6 +61,7 @@ void c_split_file_path(const char *path, char *drive, char *dir, char *fname,
     strcpy(cpath2, path);
 
     strcpy(dir, dirname(cpath1));
+    strcat(dir, "/");
     strcpy(fname, basename(cpath2));
     strip_extension(fname, ext, '.');
 
@@ -172,8 +173,8 @@ bool get_dir_contents_posix(const char *dir, int nbuffers, int bufferSize,
                 n = strlen(ddir->d_name);
                 mn = MIN((size_t)bufferSize, n);
                 strncpy(
-                    ddir->d_name,
                     dirnames[*ndir],
+                    ddir->d_name,
                     mn
                 );
                 dirLengths[*ndir] = mn;
@@ -185,8 +186,8 @@ bool get_dir_contents_posix(const char *dir, int nbuffers, int bufferSize,
                 n = strlen(ddir->d_name);
                 mn = MIN((size_t)bufferSize, n);
                 strncpy(
-                    ddir->d_name,
                     fnames[*nnames],
+                    ddir->d_name,
                     mn
                 );
                 nameLengths[*nnames] = mn;

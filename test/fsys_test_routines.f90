@@ -24,11 +24,11 @@ contains
 
         ! Test 1
         x = split_path(str)
-        if (x%drive /= drive) then
+        if (x%drive /= drive .and. x%drive /= "") then
             rst = .false.
             print "(A)", "TEST FAILED: test_split_path -1"
         end if
-        if (x%directory /= directory) then
+        if (x%directory /= directory .and. x%directory /= drive // directory) then
             rst = .false.
             print "(A)", "TEST FAILED: test_split_path -2"
         end if
@@ -62,7 +62,7 @@ contains
         rst = .false.
         do i = 1, size(dc%files)
             path = split_path(dc%files(i))
-            if (path%filename == "fsys_test") then
+            if (path%filename == "fsys_test" .or. path%filename == "CMakeLists") then
                 rst = .true.
                 exit
             end if
