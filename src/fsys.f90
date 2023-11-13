@@ -11,6 +11,7 @@ module fsys
     public :: split_path
     public :: get_directory_contents
     public :: get_current_work_directory
+    public :: find_all_files
 
     type file_path
         !! Defines a container for parts of a file path.
@@ -45,6 +46,14 @@ module fsys
         !! Returns the contents of the specified directory.
         module procedure :: get_directory_contents_char
         module procedure :: get_directory_contents_string
+    end interface
+
+    interface find_all_files
+        !! Finds all files with the specified extension within a directory.
+        module procedure :: find_all_files_char_char
+        module procedure :: find_all_files_char_string
+        module procedure :: find_all_files_string_char
+        module procedure :: find_all_files_string_string
     end interface
 
 ! ------------------------------------------------------------------------------
@@ -209,6 +218,117 @@ contains
         type(string), allocatable, dimension(:) :: rst
 
         ! Local Variables
+        type(directory_contents) :: contents
+        type(file_path) :: path
+        integer(int32) :: i, j, k, n, ns, nb
+        logical :: sf
+        type(string), allocatable, dimension(:) :: buffer, subBuffer, copy
+
+        ! Initialization
+        if (present(sub)) then
+            sf = sub
+        else
+            sf = .false.
+        end if
+
+        ! Determine the contents of the folder
+        contents = get_directory_contents(dir)
+
+        ! Add any items with the extension to the list
+        n = size(contents%files)
+        allocate(buffer(MAX(n, 100)))
+        j = 0
+        do i = 1, size(contents%files)
+            path = split_path(contents%files(i))
+            if (path%extension == ext) then
+                j = j + 1
+                buffer(j) = contents%files(i)
+            end if
+        end do
+
+        ! Subfolders?
+        if (sf) then
+            nb = size(buffer)
+            do i = 1, size(contents%subdirectories)
+                subBuffer = find_all_files(contents%subdirectories(i), ext, sub)
+                ns = size(subBuffer)
+                if (j + ns > nb) then
+                    allocate(copy, source = buffer)
+                    deallocate(buffer)
+                    allocate(buffer(max(2 * nb, nb + ns)))
+                    buffer(1:nb) = copy
+                    deallocate(copy)
+                    nb = size(buffer)
+                end if
+                do k = 1, size(subBuffer)
+                    j = j + 1
+                    buffer(j) = subBuffer(k)
+                end do
+            end do
+        end if
+
+        ! End
+        rst = buffer(1:j)
+    end function
+
+    ! ----------
+    pure function find_all_files_string_char(dir, ext, sub) &
+        result(rst)
+        !! Finds all files with the specified extension within a directory.
+        type(string), intent(in) :: dir
+            !! The parent directory to search.
+        character(len = *), intent(in) :: ext
+            !! The extension to match.  The extension must include a '.'
+            !! character (e.g. ".txt").
+        logical, intent(in), optional :: sub
+            !! OPTIONAL: Set to true to search any subdirectories as well.
+            !! If false, only the parent directory will be searched.  The 
+            !! default is false such that only the parent directory will be 
+            !! searched.
+        type(string), allocatable, dimension(:) :: rst
+
+        ! Process
+        rst = find_all_files_char_char(char(dir), ext, sub)
+    end function
+
+    ! ----------
+    pure function find_all_files_char_string(dir, ext, sub) &
+        result(rst)
+        !! Finds all files with the specified extension within a directory.
+        character(len = *), intent(in) :: dir
+            !! The parent directory to search.
+        type(string), intent(in) :: ext
+            !! The extension to match.  The extension must include a '.'
+            !! character (e.g. ".txt").
+        logical, intent(in), optional :: sub
+            !! OPTIONAL: Set to true to search any subdirectories as well.
+            !! If false, only the parent directory will be searched.  The 
+            !! default is false such that only the parent directory will be 
+            !! searched.
+        type(string), allocatable, dimension(:) :: rst
+
+        ! Process
+        rst = find_all_files_char_char(dir, char(ext), sub)
+    end function
+
+    ! ----------
+    pure function find_all_files_string_string(dir, ext, sub) &
+        result(rst)
+        !! Finds all files with the specified extension within a directory.
+        type(string), intent(in) :: dir
+            !! The parent directory to search.
+        type(string), intent(in) :: ext
+            !! The extension to match.  The extension must include a '.'
+            !! character (e.g. ".txt").
+        logical, intent(in), optional :: sub
+            !! OPTIONAL: Set to true to search any subdirectories as well.
+            !! If false, only the parent directory will be searched.  The 
+            !! default is false such that only the parent directory will be 
+            !! searched.
+        type(string), allocatable, dimension(:) :: rst
+
+        ! Process
+        rst = find_all_files_char_char(char(dir), char(ext), sub)
     end function
 
 ! ------------------------------------------------------------------------------

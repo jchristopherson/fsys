@@ -73,4 +73,40 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
+    function test_find_all_files() result(rst)
+        ! Arguments
+        logical :: rst
+
+        ! Local Variables
+        type(string) :: wd, ext
+        type(directory_contents) :: dc
+        type(file_path) :: path
+        type(string), allocatable, dimension(:) :: list
+        integer(int32) :: i
+
+        ! Initialization
+        rst = .true.
+
+        ! Get the current working directory
+        wd = get_current_work_directory()
+
+        ! Get the directory contents
+        dc = get_directory_contents(wd)
+        if (size(dc%files) < 1) return
+
+        ! Use the file extension from the first file in the available list
+        path = split_path(dc%files(1))
+        ext = path%extension
+
+        ! Now, look for a list of files with the specified extension
+        list = find_all_files(wd, ext, .true.) ! look in any subfolders
+
+        ! Ensure at least 1 file
+        if (size(list) < 1) then
+            rst = .false.
+            print "(A)", "TEST FAILED: test_find_all_files -1"
+        end if
+    end function
+
+! ------------------------------------------------------------------------------
 end module

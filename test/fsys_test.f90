@@ -51,6 +51,9 @@ program main
     rst = test_get_directory_contents()
     if (.not.rst) flag = 14
 
+    rst = test_find_all_files()
+    if (.not.rst) flag = 15
+
     ! End
     if (flag /= 0) stop flag
 end program
