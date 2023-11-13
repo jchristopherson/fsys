@@ -8,7 +8,7 @@
     <meta name="author" content="Jason Christopherson" >
     <link rel="icon" href="../favicon.png">
 
-    <title>remove &ndash; FSYS</title>
+    <title>find_all_files &ndash; FSYS</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -76,7 +76,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>remove
+    <h1>find_all_files
       <small>Interface</small>
       
     </h1>
@@ -88,18 +88,18 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p> 5.9% of total for procedures.</p>Including implementation: 89 statements, 65.4% of total for procedures.">8 statements</a>
+               title="<p> 4.4% of total for procedures.</p>Including implementation: 74 statements, 54.4% of total for procedures.">6 statements</a>
           </li>
 
             <li id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/strings.f90"> Source File</a>
+              <a href="../src/fsys.f90"> Source File</a>
             </li>
         </ul>
         <ol class="breadcrumb in-well text-right">
-              <li><a href='../sourcefile/strings.f90.html'>strings.f90</a></li>
-              <li><a href='../module/strings.html'>strings</a></li>
-          <li class="active">remove</li>
+              <li><a href='../sourcefile/fsys.f90.html'>fsys.f90</a></li>
+              <li><a href='../module/fsys.html'>fsys</a></li>
+          <li class="active">find_all_files</li>
         </ol>
       </div>
     </div>
@@ -142,12 +142,10 @@
       </div>
       <div id="modprocs-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-remove_char">remove_char</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-remove_string">remove_string</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-char_remove_char">char_remove_char</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-char_remove_string">char_remove_string</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-string_remove_char">string_remove_char</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-string_remove_string">string_remove_string</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_char_char">find_all_files_char_char</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_char_string">find_all_files_char_string</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_string_char">find_all_files_string_char</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_string_string">find_all_files_string_string</a>
         </div>
       </div>
     </div>
@@ -159,8 +157,8 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>public interface remove</h2>
-   <p>Removes a range of characters from the string.</p>
+      <h2>public interface find_all_files</h2>
+   <p>Finds all files with the specified extension within a directory.</p>
 <br>
      <section class="visible-xs visible-sm hidden-md">
          <h3>Contents</h3>
@@ -190,12 +188,10 @@
       </div>
       <div id="modprocs-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-remove_char">remove_char</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-remove_string">remove_string</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-char_remove_char">char_remove_char</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-char_remove_string">char_remove_string</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-string_remove_char">string_remove_char</a>
-            <a class="list-group-item" href="../interface/remove.html#moduleprocedure-string_remove_string">string_remove_string</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_char_char">find_all_files_char_char</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_char_string">find_all_files_char_string</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_string_char">find_all_files_string_char</a>
+            <a class="list-group-item" href="../interface/find_all_files.html#moduleprocedure-find_all_files_string_string">find_all_files_string_string</a>
         </div>
       </div>
     </div>
@@ -209,10 +205,10 @@
 
    <h2>Module Procedures</h2>
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-remove_char"></span><h3>private pure elemental function remove_char(str, start, finish) result(rst)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-find_all_files_char_char"></span><h3>private pure recursive function find_all_files_char_char(dir, ext, sub) result(rst)  
 </h3></div>
     <div class="panel-body">
-        <p>Removes a range of characters from the string.</p>
+        <p>Finds all files with the specified extension within a directory.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -235,39 +231,119 @@
               
             </td>
             <td>::</td>
-            <td><strong>str</strong></td>
+            <td><strong>dir</strong></td>
             <td>
-                <p>The string on which to operate.</p>
+                <p>The parent directory to search.</p>
             </td>
         </tr>
         <tr>
             <td>
               <span class="anchor" ></span>
-              integer(kind=int32),
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>start</strong></td>
+            <td><strong>sub</strong></td>
             <td>
-                <p>OPTIONAL: The starting index.  The default is 1.</p>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+      <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-find_all_files_char_string"></span><h3>private pure function find_all_files_char_string(dir, ext, sub) result(rst)  
+</h3></div>
+    <div class="panel-body">
+        <p>Finds all files with the specified extension within a directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The parent directory to search.</p>
             </td>
         </tr>
         <tr>
             <td>
               <span class="anchor" ></span>
-              integer(kind=int32),
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>finish</strong></td>
+            <td><strong>sub</strong></td>
             <td>
-                <p>OPTIONAL: The finishing index.  The default is len(str)</p>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
             </td>
         </tr>
     </tbody>
@@ -275,18 +351,18 @@
 
     <h4>
     Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
     </h4>
-    <p>The resulting string.</p>
+    
 
     </div>
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-remove_string"></span><h3>private pure elemental function remove_string(str, start, finish) result(rst)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-find_all_files_string_char"></span><h3>private pure function find_all_files_string_char(dir, ext, sub) result(rst)  
 </h3></div>
     <div class="panel-body">
-        <p>Removes a range of characters from the string.</p>
+        <p>Finds all files with the specified extension within a directory.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -309,39 +385,119 @@
               
             </td>
             <td>::</td>
-            <td><strong>str</strong></td>
+            <td><strong>dir</strong></td>
             <td>
-                <p>The string on which to operate.</p>
+                <p>The parent directory to search.</p>
             </td>
         </tr>
         <tr>
             <td>
               <span class="anchor" ></span>
-              integer(kind=int32),
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>start</strong></td>
+            <td><strong>sub</strong></td>
             <td>
-                <p>OPTIONAL: The starting index.  The default is 1.</p>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
+    </h4>
+    
+
+    </div>
+  </div>
+
+      <div class="panel panel-default">
+    <div class="panel-heading codesum"><span class="anchor" id="proc-find_all_files_string_string"></span><h3>private pure function find_all_files_string_string(dir, ext, sub) result(rst)  
+</h3></div>
+    <div class="panel-body">
+        <p>Finds all files with the specified extension within a directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The parent directory to search.</p>
             </td>
         </tr>
         <tr>
             <td>
               <span class="anchor" ></span>
-              integer(kind=int32),
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
             </td>
 <td>intent(in),</td>
               <td>optional</td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>finish</strong></td>
+            <td><strong>sub</strong></td>
             <td>
-                <p>OPTIONAL: The finishing index.  The default is len(str)</p>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
             </td>
         </tr>
     </tbody>
@@ -349,249 +505,9 @@
 
     <h4>
     Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
     </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-char_remove_char"></span><h3>private pure elemental function char_remove_char(str, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Removes the first occurrence of the specified substring from the 
-string.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string from which to remove the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to remove.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-char_remove_string"></span><h3>private pure elemental function char_remove_string(str, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Removes the first occurrence of the specified substring from the 
-string.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string from which to remove the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to remove.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-string_remove_char"></span><h3>private pure elemental function string_remove_char(str, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Removes the first occurrence of the specified substring from the 
-string.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string from which to remove the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to remove.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-string_remove_string"></span><h3>private pure elemental function string_remove_string(str, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Removes the first occurrence of the specified substring from the 
-string.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string from which to remove the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to remove.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
+    
 
     </div>
   </div>

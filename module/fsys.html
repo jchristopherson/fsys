@@ -88,7 +88,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="10.0% of total for modules and submodules.">125 statements</a>
+               title="14.7% of total for modules and submodules.">194 statements</a>
           </li>
 
             <li id="source-file">
@@ -131,6 +131,7 @@
       </div>
       <div id="inters-0" class="panel-collapse collapse">
         <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#interface-find_all_files">find_all_files</a>
             <a class="list-group-item" href="../module/fsys.html#interface-get_directory_contents">get_directory_contents</a>
             <a class="list-group-item" href="../module/fsys.html#interface-split_path">split_path</a>
         </div>
@@ -189,8 +190,8 @@ operations.</p>
           <li class="list-group-item">
             <ul class="list-inline">
                 <li><a href='../module/strings.html'>strings</a></li>
-                <li><a href="http://fortranwiki.org/fortran/show/iso_c_binding">iso_c_binding</a></li>
                 <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
+                <li><a href="http://fortranwiki.org/fortran/show/iso_c_binding">iso_c_binding</a></li>
             </ul>
           </li>
       </ul>
@@ -217,6 +218,7 @@ operations.</p>
       </div>
       <div id="inters-1" class="panel-collapse collapse">
         <div class="list-group">
+            <a class="list-group-item" href="../module/fsys.html#interface-find_all_files">find_all_files</a>
             <a class="list-group-item" href="../module/fsys.html#interface-get_directory_contents">get_directory_contents</a>
             <a class="list-group-item" href="../module/fsys.html#interface-split_path">split_path</a>
         </div>
@@ -268,6 +270,323 @@ operations.</p>
     
     <section>
    <h2>Interfaces</h2>
+       <div class="panel panel-default">
+    <div class="panel-heading codesum">
+      <span class="anchor" id="interface-find_all_files"></span>
+      <h3>public        interface <a href='../interface/find_all_files.html'>find_all_files</a> 
+      </h3>
+    </div>
+      <div class="panel-body">
+        <p>Finds all files with the specified extension within a directory.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure recursive function find_all_files_char_char(dir, ext, sub) result(rst)  
+
+    </h3>
+  <p>Finds all files with the specified extension within a directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The parent directory to search.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sub</strong></td>
+            <td>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure function find_all_files_char_string(dir, ext, sub) result(rst)  
+
+    </h3>
+  <p>Finds all files with the specified extension within a directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The parent directory to search.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sub</strong></td>
+            <td>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure function find_all_files_string_char(dir, ext, sub) result(rst)  
+
+    </h3>
+  <p>Finds all files with the specified extension within a directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The parent directory to search.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sub</strong></td>
+            <td>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
+    </h4>
+    
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure function find_all_files_string_string(dir, ext, sub) result(rst)  
+
+    </h3>
+  <p>Finds all files with the specified extension within a directory.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The parent directory to search.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ext</strong></td>
+            <td>
+                <p>The extension to match.  The extension must include a '.'
+character (e.g. ".txt").</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sub</strong></td>
+            <td>
+                <p>If false, only the parent directory will be searched.  The 
+default is false such that only the parent directory will be 
+searched.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>), allocatable, dimension(:)</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
        <div class="panel panel-default">
     <div class="panel-heading codesum">
       <span class="anchor" id="interface-get_directory_contents"></span>
@@ -700,7 +1019,7 @@ operations.</p>
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-11-10 21:09            </p>
+ on 2023-11-13 20:58            </p>
         </div>
       </div>
       <br>
