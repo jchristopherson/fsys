@@ -97,9 +97,13 @@ contains
         ! Use the file extension from the first file in the available list
         path = split_path(dc%files(1))
         ext = path%extension
+        print *, "EXT: ", char(ext)
 
         ! Now, look for a list of files with the specified extension
-        list = find_all_files(wd, ext, .true.) ! look in any subfolders
+        list = find_all_files(wd, ext, .false.) ! look in any subfolders
+        do i = 1, size(list)
+            print *, char(list(i))
+        end do
 
         ! Ensure at least 1 file
         if (size(list) < 1) then

@@ -236,9 +236,13 @@ contains
 
         ! Add any items with the extension to the list
         n = size(contents%files)
-        allocate(buffer(MAX(n, 100)))
+        if (n == 0) then
+            allocate(rst(0))
+            return
+        end if
+        allocate(buffer(max(n, 100)))
         j = 0
-        do i = 1, size(contents%files)
+        do i = 1, n
             path = split_path(contents%files(i))
             if (path%extension == ext) then
                 j = j + 1
@@ -252,7 +256,8 @@ contains
             do i = 1, size(contents%subdirectories)
                 subBuffer = find_all_files(contents%subdirectories(i), ext, sub)
                 ns = size(subBuffer)
-                if (j + ns > nb) then
+                if (ns == 0) cycle
+                if (j + ns >= nb) then
                     allocate(copy, source = buffer)
                     deallocate(buffer)
                     allocate(buffer(max(2 * nb, nb + ns)))
@@ -260,7 +265,7 @@ contains
                     deallocate(copy)
                     nb = size(buffer)
                 end if
-                do k = 1, size(subBuffer)
+                do k = 1, ns
                     j = j + 1
                     buffer(j) = subBuffer(k)
                 end do
@@ -268,7 +273,11 @@ contains
         end if
 
         ! End
-        rst = buffer(1:j)
+        if (j == 0) then
+            allocate(rst(0))
+        else
+            allocate(rst, source = buffer(1:j))
+        end if
     end function
 
     ! ----------
