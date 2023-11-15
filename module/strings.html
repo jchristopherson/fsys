@@ -88,7 +88,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="84.7% of total for modules and submodules.">1125 statements</a>
+               title="85.3% of total for modules and submodules.">1181 statements</a>
           </li>
 
             <li id="source-file">
@@ -151,7 +151,9 @@
             <a class="list-group-item" href="../module/strings.html#interface-string_to_int">string_to_int</a>
             <a class="list-group-item" href="../module/strings.html#interface-string_to_real">string_to_real</a>
             <a class="list-group-item" href="../module/strings.html#interface-to_c_string">to_c_string</a>
+            <a class="list-group-item" href="../module/strings.html#interface-to_lower">to_lower</a>
             <a class="list-group-item" href="../module/strings.html#interface-to_string">to_string</a>
+            <a class="list-group-item" href="../module/strings.html#interface-to_upper">to_upper</a>
             <a class="list-group-item" href="../module/strings.html#interface-trim">trim</a>
         </div>
       </div>
@@ -195,8 +197,8 @@
       <ul class="list-group">
           <li class="list-group-item">
             <ul class="list-inline">
-                <li><a href="http://fortranwiki.org/fortran/show/iso_c_binding">iso_c_binding</a></li>
                 <li><a href="http://fortranwiki.org/fortran/show/iso_fortran_env">iso_fortran_env</a></li>
+                <li><a href="http://fortranwiki.org/fortran/show/iso_c_binding">iso_c_binding</a></li>
             </ul>
           </li>
       </ul>
@@ -243,7 +245,9 @@
             <a class="list-group-item" href="../module/strings.html#interface-string_to_int">string_to_int</a>
             <a class="list-group-item" href="../module/strings.html#interface-string_to_real">string_to_real</a>
             <a class="list-group-item" href="../module/strings.html#interface-to_c_string">to_c_string</a>
+            <a class="list-group-item" href="../module/strings.html#interface-to_lower">to_lower</a>
             <a class="list-group-item" href="../module/strings.html#interface-to_string">to_string</a>
+            <a class="list-group-item" href="../module/strings.html#interface-to_upper">to_upper</a>
             <a class="list-group-item" href="../module/strings.html#interface-trim">trim</a>
         </div>
       </div>
@@ -3951,6 +3955,111 @@ returned.  </p>
 
        <div class="panel panel-default">
     <div class="panel-heading codesum">
+      <span class="anchor" id="interface-to_lower"></span>
+      <h3>public        interface <a href='../interface/to_lower.html'>to_lower</a> 
+      </h3>
+    </div>
+      <div class="panel-body">
+        <p>Converts a string to all lowercase characters.  Any characters that 
+are already lowercase, a special symbol, or a numeric value are not
+modified.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure function to_lower_char(x) result(rst)  
+
+    </h3>
+  <p>Converts a string to all lowercase characters.  Any characters that 
+are already lowercase, a special symbol, or a numeric value are not
+modified.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p>The string on which to operate.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=len)</small>
+    </h4>
+    <p>The resulting string.</p>
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure function to_lower_string(x) result(rst)  
+
+    </h3>
+  <p>Converts a string to all lowercase characters.  Any characters that 
+are already lowercase, a special symbol, or a numeric value are not
+modified.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p>The string on which to operate.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>)</small>
+    </h4>
+    <p>The resulting string.</p>
+
+          </li>
+    </ul>
+  </div>
+
+       <div class="panel panel-default">
+    <div class="panel-heading codesum">
       <span class="anchor" id="interface-to_string"></span>
       <h3>public        interface <a href='../interface/to_string.html'>to_string</a> 
       </h3>
@@ -4419,6 +4528,111 @@ not be included in the result.</p>
 
        <div class="panel panel-default">
     <div class="panel-heading codesum">
+      <span class="anchor" id="interface-to_upper"></span>
+      <h3>public        interface <a href='../interface/to_upper.html'>to_upper</a> 
+      </h3>
+    </div>
+      <div class="panel-body">
+        <p>Converts a string to all uppercase characters.  Any characters that 
+are already uppercase, a special symbol, or a numeric value are not
+modified.</p>
+      </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure function to_upper_char(x) result(rst)  
+
+    </h3>
+  <p>Converts a string to all uppercase characters.  Any characters that 
+are already uppercase, a special symbol, or a numeric value are not
+modified.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p>The string on which to operate.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>character(len=len)</small>
+    </h4>
+    <p>The resulting string.</p>
+
+          </li>
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function to_upper_string(x) result(rst)  
+
+    </h3>
+  <p>Converts a string to all uppercase characters.  Any characters that 
+are already uppercase, a special symbol, or a numeric value are not
+modified.</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" ></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>x</strong></td>
+            <td>
+                <p>The string on which to operate.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/string.html'>string</a>)</small>
+    </h4>
+    <p>The resulting string.</p>
+
+          </li>
+    </ul>
+  </div>
+
+       <div class="panel panel-default">
+    <div class="panel-heading codesum">
       <span class="anchor" id="interface-trim"></span>
       <h3>public        interface <a href='../interface/trim.html'>trim</a> 
       </h3>
@@ -4608,7 +4822,7 @@ generic,
           <p class="text-right">
             Documentation generated by 
             <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2023-11-13 21:57            </p>
+ on 2023-11-15 17:53            </p>
         </div>
       </div>
       <br>

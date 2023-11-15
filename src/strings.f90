@@ -27,6 +27,8 @@ module strings
     public :: regex_match
     public :: regex_search
     public :: replace
+    public :: to_upper
+    public :: to_lower
 
 ! ------------------------------------------------------------------------------
     type string
@@ -215,6 +217,22 @@ module strings
         module procedure :: string_replace_char_string
         module procedure :: string_replace_string_char
         module procedure :: string_replace_string_string
+    end interface
+
+    interface to_upper
+        !! Converts a string to all uppercase characters.  Any characters that 
+        !! are already uppercase, a special symbol, or a numeric value are not
+        !! modified.
+        module procedure :: to_upper_char
+        module procedure :: to_upper_string
+    end interface
+
+    interface to_lower
+        !! Converts a string to all lowercase characters.  Any characters that 
+        !! are already lowercase, a special symbol, or a numeric value are not
+        !! modified.
+        module procedure :: to_lower_char
+        module procedure :: to_lower_string
     end interface
 
 ! ------------------------------------------------------------------------------
@@ -1262,6 +1280,84 @@ contains
             else
                 allocate(character(len = 0) :: rst%m_str)
             end if
+        end if
+    end function
+
+! ------------------------------------------------------------------------------
+    pure function to_upper_char(x) result(rst)
+        !! Converts a string to all uppercase characters.  Any characters that 
+        !! are already uppercase, a special symbol, or a numeric value are not
+        !! modified.
+        character(len = *), intent(in) :: x
+            !! The string on which to operate.
+        character(len = len(x)) :: rst
+            !! The resulting string.
+
+        integer(int32) :: i, n, c
+        n = len(x)
+        do i = 1, n
+            c = iachar(x(i:i))
+            if (c >= iachar("a") .and. c <= iachar("z")) then
+                rst(i:i) = achar(c - 32)
+            else
+                rst(i:i) = x(i:i)
+            end if
+        end do
+    end function
+
+    ! ----------
+    pure elemental function to_upper_string(x) result(rst)
+        !! Converts a string to all uppercase characters.  Any characters that 
+        !! are already uppercase, a special symbol, or a numeric value are not
+        !! modified.
+        type(string), intent(in) :: x
+            !! The string on which to operate.
+        type(string) :: rst
+            !! The resulting string.
+
+        if (allocated(x%m_str)) then
+            allocate(rst%m_str, source = to_upper_char(x%m_str))
+        else
+            allocate(character(len = 0) :: rst%m_str)
+        end if
+    end function
+
+! ------------------------------------------------------------------------------
+    pure function to_lower_char(x) result(rst)
+        !! Converts a string to all lowercase characters.  Any characters that 
+        !! are already lowercase, a special symbol, or a numeric value are not
+        !! modified.
+        character(len = *), intent(in) :: x
+            !! The string on which to operate.
+        character(len = len(x)) :: rst
+            !! The resulting string.
+
+        integer(int32) :: i, n, c
+        n = len(x)
+        do i = 1, n
+            c = iachar(x(i:i))
+            if (c >= iachar("A") .and. c <= iachar("Z")) then
+                rst(i:i) = achar(c + 32)
+            else
+                rst(i:i) = x(i:i)
+            end if
+        end do
+    end function
+
+    ! ----------
+    pure function to_lower_string(x) result(rst)
+        !! Converts a string to all lowercase characters.  Any characters that 
+        !! are already lowercase, a special symbol, or a numeric value are not
+        !! modified.
+        type(string), intent(in) :: x
+            !! The string on which to operate.
+        type(string) :: rst
+            !! The resulting string.
+
+        if (allocated(x%m_str)) then
+            allocate(rst%m_str, source = to_lower_char(x%m_str))
+        else
+            allocate(character(len = 0) :: rst%m_str)
         end if
     end function
 

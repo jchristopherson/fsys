@@ -8,7 +8,7 @@
     <meta name="author" content="Jason Christopherson" >
     <link rel="icon" href="../favicon.png">
 
-    <title>insert &ndash; FSYS</title>
+    <title>to_upper &ndash; FSYS</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
@@ -76,7 +76,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>insert
+    <h1>to_upper
       <small>Interface</small>
       
     </h1>
@@ -88,7 +88,7 @@
           <li id="statements"><i class="fa fa-list-ol"></i>
             <a data-toggle="tooltip"
                data-placement="bottom" data-html="true"
-               title="<p> 4.2% of total for procedures.</p>Including implementation: 60 statements, 41.7% of total for procedures.">6 statements</a>
+               title="<p> 2.8% of total for procedures.</p>Including implementation: 27 statements, 18.8% of total for procedures.">4 statements</a>
           </li>
 
             <li id="source-file">
@@ -99,7 +99,7 @@
         <ol class="breadcrumb in-well text-right">
               <li><a href='../sourcefile/strings.f90.html'>strings.f90</a></li>
               <li><a href='../module/strings.html'>strings</a></li>
-          <li class="active">insert</li>
+          <li class="active">to_upper</li>
         </ol>
       </div>
     </div>
@@ -142,10 +142,8 @@
       </div>
       <div id="modprocs-0" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_char">char_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_string">char_insert_string</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_char">string_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_string">string_insert_string</a>
+            <a class="list-group-item" href="../interface/to_upper.html#moduleprocedure-to_upper_char">to_upper_char</a>
+            <a class="list-group-item" href="../interface/to_upper.html#moduleprocedure-to_upper_string">to_upper_string</a>
         </div>
       </div>
     </div>
@@ -157,8 +155,10 @@
     </div>
     
     <div class="col-md-9" id='text'>
-      <h2>public interface insert</h2>
-   <p>Inserts a substring into another string at the specified index.</p>
+      <h2>public interface to_upper</h2>
+   <p>Converts a string to all uppercase characters.  Any characters that 
+are already uppercase, a special symbol, or a numeric value are not
+modified.</p>
 <br>
      <section class="visible-xs visible-sm hidden-md">
          <h3>Contents</h3>
@@ -188,10 +188,8 @@
       </div>
       <div id="modprocs-1" class="panel-collapse collapse">
         <div class="list-group">
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_char">char_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-char_insert_string">char_insert_string</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_char">string_insert_char</a>
-            <a class="list-group-item" href="../interface/insert.html#moduleprocedure-string_insert_string">string_insert_string</a>
+            <a class="list-group-item" href="../interface/to_upper.html#moduleprocedure-to_upper_char">to_upper_char</a>
+            <a class="list-group-item" href="../interface/to_upper.html#moduleprocedure-to_upper_string">to_upper_string</a>
         </div>
       </div>
     </div>
@@ -205,10 +203,12 @@
 
    <h2>Module Procedures</h2>
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-char_insert_char"></span><h3>private pure elemental function char_insert_char(str, start, substr) result(rst)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-to_upper_char"></span><h3>private pure function to_upper_char(x) result(rst)  
 </h3></div>
     <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
+        <p>Converts a string to all uppercase characters.  Any characters that 
+are already uppercase, a special symbol, or a numeric value are not
+modified.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -231,39 +231,9 @@
               
             </td>
             <td>::</td>
-            <td><strong>str</strong></td>
+            <td><strong>x</strong></td>
             <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
+                <p>The string on which to operate.</p>
             </td>
         </tr>
     </tbody>
@@ -271,7 +241,7 @@
 
     <h4>
     Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
+    <small>character(len=len)</small>
     </h4>
     <p>The resulting string.</p>
 
@@ -279,84 +249,12 @@
   </div>
 
       <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-char_insert_string"></span><h3>private pure elemental function char_insert_string(str, start, substr) result(rst)  
+    <div class="panel-heading codesum"><span class="anchor" id="proc-to_upper_string"></span><h3>private pure elemental function to_upper_string(x) result(rst)  
 </h3></div>
     <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-string_insert_char"></span><h3>private pure elemental function string_insert_char(str, start, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
+        <p>Converts a string to all uppercase characters.  Any characters that 
+are already uppercase, a special symbol, or a numeric value are not
+modified.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -379,113 +277,9 @@
               
             </td>
             <td>::</td>
-            <td><strong>str</strong></td>
+            <td><strong>x</strong></td>
             <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/string.html'>string</a>)</small>
-    </h4>
-    <p>The resulting string.</p>
-
-    </div>
-  </div>
-
-      <div class="panel panel-default">
-    <div class="panel-heading codesum"><span class="anchor" id="proc-string_insert_string"></span><h3>private pure elemental function string_insert_string(str, start, substr) result(rst)  
-</h3></div>
-    <div class="panel-body">
-        <p>Inserts a substring into another string at the specified index.</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th>Type</th>
-<th>Intent</th><th>Optional</th>        <th>Attributes</th>
-        <th></th>
-        <th>Name</th>
-        <th></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>str</strong></td>
-            <td>
-                <p>The string into which the substring will be inserted.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              integer(kind=int32),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>start</strong></td>
-            <td>
-                <p>The starting index at which to insert the substring.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              type(<a href='../type/string.html'>string</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>substr</strong></td>
-            <td>
-                <p>The substring to insert.</p>
+                <p>The string on which to operate.</p>
             </td>
         </tr>
     </tbody>
