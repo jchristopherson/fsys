@@ -54,6 +54,12 @@ program main
     rst = test_find_all_files()
     if (.not.rst) flag = 15
 
+    rst = test_to_upper()
+    if (.not.rst) flag = 16
+
+    rst = test_to_lower()
+    if (.not.rst) flag = 17
+
     ! End
     if (flag /= 0) stop flag
 end program
