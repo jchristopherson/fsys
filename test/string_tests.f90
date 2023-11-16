@@ -399,15 +399,13 @@ contains
         character(len = *), parameter :: ans = "THIS IS A TEST STRING 123&."
 
         ! Local Variables
-        character(len = :), allocatable :: x
+        type(string) :: x
 
         ! Initialization
         rst = .true.
 
         ! Test 1
         x = to_upper(str)
-        print *, x
-        print *, len(x)
         if (x /= ans) then
             rst = .false.
             print "(A)", "TEST FAILED: test_to_upper -1"
@@ -424,15 +422,13 @@ contains
         character(len = *), parameter :: ans = "this is a test string 123&."
 
         ! Local Variables
-        character(len = :), allocatable :: x
+        type(string) :: x
 
         ! Initialization
         rst = .true.
 
         ! Test 1
         x = to_lower(str)
-        print *, x
-        print *, len(x)
         if (x /= ans) then
             rst = .false.
             print "(A)", "TEST FAILED: test_to_lower -1"

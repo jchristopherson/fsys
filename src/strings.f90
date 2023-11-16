@@ -1290,17 +1290,18 @@ contains
         !! modified.
         character(len = *), intent(in) :: x
             !! The string on which to operate.
-        character(len = len(x)) :: rst
+        type(string) :: rst
             !! The resulting string.
 
         integer(int32) :: i, n, c
         n = len(x)
+        allocate(character(len = n) :: rst%m_str)
         do i = 1, n
             c = iachar(x(i:i))
             if (c >= iachar("a") .and. c <= iachar("z")) then
-                rst(i:i) = achar(c - 32)
+                rst%m_str(i:i) = achar(c - 32)
             else
-                rst(i:i) = x(i:i)
+                rst%m_str(i:i) = x(i:i)
             end if
         end do
     end function
@@ -1316,7 +1317,8 @@ contains
             !! The resulting string.
 
         if (allocated(x%m_str)) then
-            allocate(rst%m_str, source = to_upper_char(x%m_str))
+            ! allocate(rst%m_str, source = to_upper_char(x%m_str))
+            rst = to_upper_char(x%m_str)
         else
             allocate(character(len = 0) :: rst%m_str)
         end if
@@ -1329,17 +1331,18 @@ contains
         !! modified.
         character(len = *), intent(in) :: x
             !! The string on which to operate.
-        character(len = len(x)) :: rst
+        type(string) :: rst
             !! The resulting string.
 
         integer(int32) :: i, n, c
         n = len(x)
+        allocate(character(len = n) :: rst%m_str)
         do i = 1, n
             c = iachar(x(i:i))
             if (c >= iachar("A") .and. c <= iachar("Z")) then
-                rst(i:i) = achar(c + 32)
+                rst%m_str(i:i) = achar(c + 32)
             else
-                rst(i:i) = x(i:i)
+                rst%m_str(i:i) = x(i:i)
             end if
         end do
     end function
@@ -1355,7 +1358,8 @@ contains
             !! The resulting string.
 
         if (allocated(x%m_str)) then
-            allocate(rst%m_str, source = to_lower_char(x%m_str))
+            ! allocate(rst%m_str, source = to_lower_char(x%m_str))
+            rst = to_lower_char(x%m_str)
         else
             allocate(character(len = 0) :: rst%m_str)
         end if
