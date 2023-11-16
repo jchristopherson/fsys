@@ -1345,7 +1345,7 @@ contains
     end function
 
     ! ----------
-    pure function to_lower_string(x) result(rst)
+    pure elemental function to_lower_string(x) result(rst)
         !! Converts a string to all lowercase characters.  Any characters that 
         !! are already lowercase, a special symbol, or a numeric value are not
         !! modified.
@@ -1487,8 +1487,8 @@ contains
         end do
 
         ! Process
-        csrc = to_c_string(src)
-        cpattern = to_c_string(pattern)
+        allocate(csrc, source = to_c_string(src))
+        allocate(cpattern, source = to_c_string(pattern))
         call c_regex_match(csrc, cpattern, buffer_count, buffer_size, buffer, &
             sizeList, count)
 
@@ -1598,8 +1598,8 @@ contains
         end do
 
         ! Process
-        csrc = to_c_string(src)
-        cpattern = to_c_string(pattern)
+        allocate(csrc, source = to_c_string(src))
+        allocate(cpattern, source = to_c_string(pattern))
         call c_regex_search(csrc, cpattern, buffer_count, buffer_size, buffer, &
             sizeList, count)
 
@@ -1695,9 +1695,9 @@ contains
         allocate(buffer(bufferSize), source = c_null_char)
 
         ! Process
-        csrc = to_c_string(src)
-        cpattern = to_c_string(pattern)
-        csubstr = to_c_string(substr)
+        allocate(csrc, source = to_c_string(src))
+        allocate(cpattern, source = to_c_string(pattern))
+        allocate(csubstr, source = to_c_string(substr))
         call c_regex_replace(csrc, cpattern, csubstr, bufferSize, buffer, count)
         if (count > 0) then
             rst = to_string(buffer, count)
