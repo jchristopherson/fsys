@@ -20,7 +20,6 @@ if (WIN32)
 endif()
 
 # Build
-add_subdirectory(cfsys)
 add_subdirectory(src)
 add_fortran_library(
     ${PROJECT_NAME}
@@ -30,10 +29,9 @@ add_fortran_library(
     ${PROJECT_VERSION_MAJOR}
     ${FSYS_SOURCES}
 )
-link_library(${PROJECT_NAME} cfsys ${PROJECT_INCLUDE_DIR})
 
 # Include necessary headers
-target_include_directories(${PROJECT_NAME} PRIVATE cfsys/include)
+target_include_directories(${PROJECT_NAME} PRIVATE include)
 
 # Define the OS flags for OS-specific code
 if (WIN32)
