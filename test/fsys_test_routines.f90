@@ -2,12 +2,14 @@ module fsys_test_routines
     use fsys
     use strings
     use iso_fortran_env
+    use iso_c_binding
     implicit none
 contains
 ! ------------------------------------------------------------------------------
-    function test_split_path() result(rst)
+    function test_split_path() result(rst) &
+        bind(C, name = "test_split_path")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: drive = "C:"
@@ -43,9 +45,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_get_directory_contents() result(rst)
+    function test_get_directory_contents() result(rst) &
+        bind(C, name = "test_get_directory_contents")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Local Variables
         type(string) :: wd
@@ -73,9 +76,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_find_all_files() result(rst)
+    function test_find_all_files() result(rst) &
+        bind(C, name = "test_find_all_files")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Local Variables
         type(string) :: wd, ext

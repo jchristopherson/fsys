@@ -22,4 +22,4 @@ auto-tests = false
 [[test]]
 name = "fsys_test"
 source-dir = "test"
-main = "fsys_test.f90"
+main = "c_fsys_test.cpp"

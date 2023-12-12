@@ -5,9 +5,10 @@ module string_tests
     implicit none
 contains
 ! ------------------------------------------------------------------------------
-    function test_string_equality() result(rst)
+    function test_string_equality() result(rst) &
+        bind(C, name = "test_string_equality")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: string1 = "String 1"
@@ -34,9 +35,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_split_string() result(rst)
+    function test_split_string() result(rst) &
+        bind(C, name = "test_split_string")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: s1 = "Test string 1"
@@ -106,9 +108,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_to_string() result(rst)
+    function test_to_string() result(rst) &
+        bind(C, name = "test_to_string")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         integer(int32), parameter :: i1 = 4321
@@ -139,9 +142,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_to_c_string() result(rst)
+    function test_to_c_string() result(rst) &
+        bind(C, name = "test_to_c_string")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: s1 = "Test C String."
@@ -169,9 +173,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_string_to_int() result(rst)
+    function test_string_to_int() result(rst) &
+        bind(C, name = "test_string_to_int")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: x1 = "123456789"
@@ -192,9 +197,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_string_to_real() result(rst)
+    function test_string_to_real() result(rst) &
+        bind(C, name = "test_string_to_real")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: x1 = "1.2345"
@@ -216,9 +222,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_string_builder() result(rst)
+    function test_string_builder() result(rst) &
+        bind(C, name = "test_string_builder")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: s1 = "Test string, part 1"
@@ -243,9 +250,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_remove() result(rst)
+    function test_remove() result(rst) &
+        bind(C, name = "test_remove")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         integer(int32), parameter :: start = 9  ! j in just
@@ -284,9 +292,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_insert() result(rst)
+    function test_insert() result(rst) &
+        bind(C, name = "test_insert")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: str = "This is a test string."
@@ -309,9 +318,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_regex_match() result(rst)
+    function test_regex_match() result(rst) &
+        bind(C, name = "test_regex_match")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: str = "string."
@@ -337,9 +347,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_regex_search() result(rst)
+    function test_regex_search() result(rst) &
+        bind(C, name = "test_regex_search")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: str = "Test with numbers 123456."
@@ -365,9 +376,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_replace() result(rst)
+    function test_replace() result(rst) &
+        bind(C, name = "test_replace")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: str = "This is just a test string."
@@ -390,9 +402,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_to_upper() result(rst)
+    function test_to_upper() result(rst) &
+        bind(C, name = "test_to_upper")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: str = "This is a test string 123&."
@@ -413,9 +426,10 @@ contains
     end function
 
 ! ------------------------------------------------------------------------------
-    function test_to_lower() result(rst)
+    function test_to_lower() result(rst) &
+        bind(C, name = "test_to_lower")
         ! Arguments
-        logical :: rst
+        logical(c_bool) :: rst
 
         ! Parameters
         character(len = *), parameter :: str = "This Is A Test String 123&."
