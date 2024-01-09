@@ -22,4 +22,5 @@ auto-tests = false
 [[test]]
 name = "fsys_test"
 source-dir = "test"
+include-dir = "test"
 main = "c_fsys_test.cpp"
