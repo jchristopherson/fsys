@@ -10,7 +10,6 @@ homepage = "https://github.com/jchristopherson/fsys"
 [library]
 source-dir = "src"
 include-dir = "include"
-link = ["stdc++"]
 
 [install]
 library = true
@@ -22,6 +21,7 @@ fstring = { git = "https://github.com/jchristopherson/fstring" }
 auto-executables = false
 auto-examples = false
 auto-tests = false
+link = ["stdc++"]
 
 [[test]]
 name = "fsys_test"
