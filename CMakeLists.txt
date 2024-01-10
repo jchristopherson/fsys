@@ -19,6 +19,9 @@ if (WIN32)
     set(CMAKE_CXX_FLAGS_RELEASE "-DUNICODE -D_UNICODE -D_WIN32_WINNT=_WIN32_WINNT_VISTA -DNTDDI_VERSION=NTDDI_VISTA -Wl,--allow-multiple-definition")
 endif()
 
+# Dependencies
+add_subdirectory(dependencies)
+
 # Build
 add_subdirectory(src)
 add_fortran_library(
@@ -29,6 +32,7 @@ add_fortran_library(
     ${PROJECT_VERSION_MAJOR}
     ${FSYS_SOURCES}
 )
+link_library(${PROJECT_NAME} ${fstring_LIBRARY} ${fstring_INCLUDE_DIR})
 
 # Include necessary headers
 target_include_directories(${PROJECT_NAME} PRIVATE include)

@@ -3,9 +3,12 @@
 #include <cwchar>
 #include <vector>
 #include <cstring>
-#include "helper_macros.h"
 
 void strip_extension(char *fname, char *ext, char sep) ;
+
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
 
 #ifdef WIN32
 
