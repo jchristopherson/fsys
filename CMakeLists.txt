@@ -42,9 +42,6 @@ if (WIN32)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WIN32=1)
 endif()
 
-# Installation
-add_subdirectory(install)
-
 # Testing
 option(BUILD_TESTING "Build tests")
 include(CTest)
