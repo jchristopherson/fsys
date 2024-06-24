@@ -42,9 +42,9 @@ jobs:
     - name: Install fpm
       uses: fortran-lang/setup-fpm@v3
       with:
-        fpm-version: 'v0.8.2'
+        fpm-version: 'v0.10.0'
 
-    - name: Build FSYS
+    - name: Build the library
       run: |
         gfortran --version
         fpm build
@@ -70,16 +70,18 @@ jobs:
           install: |
             mingw-w64-x86_64-gcc-fortran
             mingw-w64-x86_64-fpm
+            mingw-w64-x86_64-openblas
+            mingw-w64-x86_64-lapack
 
       - name: fpm build
         run: |
           gfortran --version
           fpm --version
-          fpm build --cxx-flag "-DUNICODE -D_UNICODE -D_WIN32_WINNT=_WIN32_WINNT_VISTA -DNTDDI_VERSION=NTDDI_VISTA"
+          fpm build
 
       - name: fpm test
         run: |
-          fpm test --cxx-flag "-DUNICODE -D_UNICODE -D_WIN32_WINNT=_WIN32_WINNT_VISTA -DNTDDI_VERSION=NTDDI_VISTA"
+          fpm test
 
   intel-build:
     runs-on: ubuntu-latest
@@ -87,8 +89,8 @@ jobs:
       fail-fast: false
 
     env:
-      FPM_FC: ifort
-      FC: ifort
+      FPM_FC: ifx
+      FC: ifx
 
     steps:
     - name: Checkout code
@@ -114,11 +116,11 @@ jobs:
     - name: Install fpm
       uses: fortran-lang/setup-fpm@v3
       with:
-        fpm-version: 'v0.8.2'
+        fpm-version: 'v0.10.0'
 
     - name: fpm build
       run: |
-        ifort --version
+        ifx --version
         fpm --version
         fpm build --profile debug --flag "-warn nointerfaces"
 
