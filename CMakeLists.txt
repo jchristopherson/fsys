@@ -3,11 +3,8 @@ cmake_minimum_required(VERSION 3.24)
 project(
     fsys
     LANGUAGES Fortran C CXX
-    VERSION 1.0.0
+    VERSION 1.0.1
 )
-
-# Get helper macros and functions
-include("${PROJECT_SOURCE_DIR}/cmake/helper.cmake")
 
 # Confgiure everything
 add_subdirectory(configure)
@@ -19,20 +16,8 @@ if (WIN32)
     set(CMAKE_CXX_FLAGS_RELEASE "-DUNICODE -D_UNICODE -D_WIN32_WINNT=_WIN32_WINNT_VISTA -DNTDDI_VERSION=NTDDI_VISTA -Wl,--allow-multiple-definition")
 endif()
 
-# Dependencies
-add_subdirectory(dependencies)
-
 # Build
 add_subdirectory(src)
-add_fortran_library(
-    ${PROJECT_NAME}
-    ${PROJECT_INCLUDE_DIR}
-    ${CMAKE_INSTALL_INCLUDEDIR}
-    ${PROJECT_VERSION}
-    ${PROJECT_VERSION_MAJOR}
-    ${FSYS_SOURCES}
-)
-link_library(${PROJECT_NAME} ${fstring_LIBRARY} ${fstring_INCLUDE_DIR})
 
 # Include necessary headers
 target_include_directories(${PROJECT_NAME} PRIVATE include)
@@ -41,6 +26,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE include)
 if (WIN32)
     target_compile_definitions(${PROJECT_NAME} PRIVATE WIN32=1)
 endif()
+
+# Install
+install(
+  EXPORT ${PROJECT_NAME}-targets
+  NAMESPACE ${PROJECT_NAME}::
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
+)
 
 # Testing
 option(BUILD_TESTING "Build tests")
