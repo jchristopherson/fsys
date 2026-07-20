@@ -26,6 +26,7 @@ endif()
 
 # Build
 add_library(${PROJECT_NAME} ${FSYS_SOURCES})
+set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE Fortran)
 target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC
